@@ -20,19 +20,21 @@ export const fragment = query => Component => createFragmentContainer(
   query,
 );
 
-export const queryRenderer = rootQuery => Component => class RelayRoot extends React.Component {
-  static displayName = `RelayRoot(${Component.displayName})`
+export const queryRenderer = (rootQuery, variables) =>
+  Component => class RelayRoot extends React.Component {
+    static displayName = `RelayRoot(${Component.displayName})`
 
-  render() {
-    invariant();
+    render() {
+      invariant();
 
-    return (
-      <QueryRenderer
-        environment={environment}
-        query={rootQuery}
-        render={({ error, props }) => <Component {...props} error={error} />}
-      />
-    );
+      return (
+        <QueryRenderer
+          environment={environment}
+          query={rootQuery}
+          variables={variables}
+          render={({ error, props }) => <Component {...props} error={error} />}
+        />
+      );
   }
 };
 

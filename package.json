@@ -1,6 +1,6 @@
 {
   "name": "relay-compose",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "This is HOC for relay modern to work with сomposable components.",
   "main": "./lib/index.js",
   "scripts": {
