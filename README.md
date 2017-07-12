@@ -80,5 +80,40 @@ And now you are ready to use it.
       }),
     )(MyForm);
 
+## RefetchContainer
+
+    import { queryRenderer, refetchContainer } from 'relay-compose';
+
+    export default compose(
+      queryRenderer(graphql`
+        query appQuery {
+          viewer {
+            ...Test_viewer
+          }
+        }
+      `),
+      refetchContainer(
+        {
+          viewer: graphql.experimental`
+            fragment Test_viewer on User
+            @argumentDefinitions(
+              name: { type: String }
+            ) {
+              id
+              firstName
+              lastName
+            }
+          `,
+        },
+        graphql.experimental`
+          query TestQuery($name: String!) {
+            viewer {
+              ...Test_viewer @arguments(name: $name)
+            }
+          }
+        `,
+      ),
+    )(Test);
+
 # Information
 This project is still in WIP. You are welcome to participate to it.

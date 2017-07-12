@@ -3,6 +3,7 @@ import {
   QueryRenderer,
   createFragmentContainer,
   commitMutation,
+  createRefetchContainer,
 } from 'react-relay';
 
 let environment;
@@ -27,16 +28,30 @@ export const queryRenderer = (rootQuery, variables) =>
     render() {
       invariant();
 
+      const vars = typeof variables === 'function' ? variables(this.props) : variables;
+
       return (
         <QueryRenderer
           environment={environment}
           query={rootQuery}
-          variables={variables}
-          render={({ error, props }) => <Component {...props} error={error} />}
+          variables={vars}
+          render={({ error, props }) => (
+            <Component
+              {...props}
+              {...this.props}
+              error={error}
+            />
+          )}
         />
       );
   }
 };
+
+export const refetchContainer = (renderVariables, query) => Component => createRefetchContainer(
+  Component,
+  renderVariables,
+  query,
+);
 
 export const createMutation = (
   mutation,
