@@ -35,13 +35,19 @@ export const queryRenderer = (rootQuery, variables) =>
           environment={environment}
           query={rootQuery}
           variables={vars}
-          render={({ error, props }) => (
-            <Component
-              {...props}
-              {...this.props}
-              error={error}
-            />
-          )}
+          render={({ error, props }) => {
+            if (!props) {
+              return null;
+            }
+
+            return (
+              <Component
+                {...props}
+                {...this.props}
+                error={error}
+              />
+            );
+          }}
         />
       );
   }
