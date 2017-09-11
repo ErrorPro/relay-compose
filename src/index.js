@@ -36,7 +36,7 @@ export const queryRenderer = (rootQuery, variables) =>
           query={rootQuery}
           variables={vars}
           render={({ error, props }) => {
-            if (!props) {
+            if (!props && !error) {
               return null;
             }
 
