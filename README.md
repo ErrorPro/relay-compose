@@ -115,5 +115,54 @@ And now you are ready to use it.
       ),
     )(Test);
 
+## PaginationContainer
+
+    import { queryRenderer, paginationContainer } from 'relay-compose';
+
+    export default compose(
+      queryRenderer(
+        query songsContainerQuery(
+          $count: Int!
+          $cursor: String
+        ) {
+          ...songsContainer
+        }
+      `),
+      paginationContainer(
+        fragment songsContainer on Query {
+          songs(
+            first: $count,
+            after: $cursor,
+          ) @connection(key: "songsContainer_songs") {
+            edges {
+              node {
+                audioId,
+                name,
+                coverImageUrl,
+                artist,
+                likes,
+                dislikes,
+              }
+            }
+          }
+        }
+      `),
+      {
+        direction: 'forward',
+        query: graphql`
+          query songsContainerForwardQuery(
+            $count: Int!
+            $cursor: String
+          ) {
+            ...songsContainer,
+          }
+        `,
+        getVariables: (_, { count, cursor }) => ({
+          count,
+          cursor,
+        }),
+      }),
+    )(Test);
+
 # Information
 This project is still in WIP. You are welcome to participate to it.
