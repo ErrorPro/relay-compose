@@ -4,6 +4,7 @@ import {
   createFragmentContainer,
   commitMutation,
   createRefetchContainer,
+  createPaginationContainer,
 } from 'react-relay';
 
 let environment;
@@ -52,6 +53,12 @@ export const queryRenderer = (rootQuery, variables) =>
       );
   }
 };
+
+export const paginationContainer = (query, connectionConfig) => Component => createPaginationContainer(
+  Component,
+  query,
+  connectionConfig,
+);
 
 export const refetchContainer = (renderVariables, query) => Component => createRefetchContainer(
   Component,
