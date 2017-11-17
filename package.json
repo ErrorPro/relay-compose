@@ -1,5 +1,5 @@
 {
-  "name": "relay-compose",
+  "name": "recompose-relay",
   "version": "1.0.6",
   "description": "This is HOC for relay modern to work with сomposable components.",
   "main": "./lib/index.js",
@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ErrorPro/relay-compose.git"
+    "url": "git+https://github.com/MartinDawson/relay-compose.git"
   },
-  "author": "Ven Korolev",
+  "author": "Ven Korolev, Martin Dawson",
   "license": "MIT",
   "keywords": [
     "react",
@@ -22,11 +22,11 @@
     "relay-compose"
   ],
   "bugs": {
-    "url": "https://github.com/ErrorPro/relay-compose/issues"
+    "url": "https://github.com/MartinDawson/relay-compose/issues"
   },
-  "homepage": "https://github.com/ErrorPro/relay-compose#readme",
+  "homepage": "https://github.com/MartinDawson/relay-compose#readme",
   "peerDependencies": {
-    "react": "^15.0.0",
+    "react": "^15.0.0 || 16.0.0",
     "react-relay": "^1.0.0"
   },
   "devDependencies": {
