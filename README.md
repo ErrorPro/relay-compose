@@ -20,18 +20,18 @@ setEnviroment(relayEnv);
 And now you are ready to use it.
 
 # Examples
-## Fragment
+## FragmentContainer
 
 ```js
 import {
   graphql,
 } from 'react-relay';
-import { fragment } from 'relay-compose';
+import { fragmentContainer } from 'relay-compose';
 
 import Persons from './Persons';
 
 export default compose(
-  fragment(graphql`
+  fragmentContainer(graphql`
     fragment PersonsContainerDesc on Person @relay(plural: true) {
       id
       title

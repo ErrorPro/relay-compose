@@ -17,11 +17,6 @@ const invariant = () => {
 
 export const setEnviroment = env => environment = env;
 
-export const fragment = query => Component => createFragmentContainer(
-  props => <Component {...props} />,
-  query,
-);
-
 export const queryRenderer = (rootQuery, variables) =>
   Component => class RelayRoot extends React.Component {
     static displayName = `RelayRoot(${Component.displayName})`
@@ -53,6 +48,11 @@ export const queryRenderer = (rootQuery, variables) =>
       );
   }
 };
+
+export const fragmentContainer = query => Component => createFragmentContainer(
+  props => <Component {...props} />,
+  query,
+);
 
 export const paginationContainer = (query, connectionConfig) => Component => createPaginationContainer(
   Component,
