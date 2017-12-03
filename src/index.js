@@ -4,6 +4,7 @@ import {
   createFragmentContainer,
   commitMutation,
   createRefetchContainer,
+  createPaginationContainer,
 } from 'react-relay';
 
 let environment;
@@ -19,6 +20,12 @@ export const setEnviroment = env => environment = env;
 export const fragment = query => Component => createFragmentContainer(
   props => <Component {...props} />,
   query,
+);
+
+export const paginationContainer = (query, connectionConfig) => Component => createPaginationContainer(
+  Component,
+  query,
+  connectionConfig,
 );
 
 export const queryRenderer = (rootQuery, variables) =>

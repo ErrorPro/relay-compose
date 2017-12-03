@@ -1,6 +1,6 @@
 {
   "name": "relay-compose",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "This is HOC for relay modern to work with сomposable components.",
   "main": "./lib/index.js",
   "scripts": {
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/ErrorPro/relay-compose#readme",
   "peerDependencies": {
-    "react": "^15.0.0",
+    "react": "^15.0.0 || ^16.0.0",
     "react-relay": "^1.0.0"
   },
   "devDependencies": {
