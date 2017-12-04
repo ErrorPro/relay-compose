@@ -80,7 +80,13 @@ export const createMutation = (
     {
       mutation,
       variables,
-      onCompleted: res,
+      onCompleted: (result, errors) => {
+        if (errors) {
+          return rej(errors);
+        }
+
+        res(result);
+      },
       onError: rej,
       optimisticResponse,
       optimisticUpdater,
