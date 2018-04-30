@@ -68,10 +68,7 @@ export const refetchContainer = (renderVariables, query) => Component => createR
 
 export const createMutation = (
   mutation,
-  variables,
-  optimisticResponse,
-  optimisticUpdater,
-  updater,
+  config,
 ) => new Promise((res, rej) => {
   invariant();
 
@@ -79,7 +76,6 @@ export const createMutation = (
     environment,
     {
       mutation,
-      variables,
       onCompleted: (result, errors) => {
         if (errors) {
           return rej(errors);
@@ -88,9 +84,7 @@ export const createMutation = (
         res(result);
       },
       onError: rej,
-      optimisticResponse,
-      optimisticUpdater,
-      updater,
+      ...config,
     },
   );
 });

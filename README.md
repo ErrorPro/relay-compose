@@ -80,7 +80,15 @@ export default compose(
             clientMutationId
           }
         }
-      `, { input: data }).then(res => console.log(res);
+      `, {
+        variables: {
+          input: data,
+        },
+        configs: [{
+          type: 'RANGE_ADD',
+          ...myConfig,
+        }],
+      }).then(res => console.log(res);
     },
   })),
   reduxForm({
