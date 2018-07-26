@@ -15,7 +15,7 @@ const invariant = () => {
   }
 };
 
-export const setEnviroment = env => environment = env;
+export const setEnvironment = env => environment = env;
 
 export const fragment = query => Component => createFragmentContainer(
   props => <Component {...props} />,
