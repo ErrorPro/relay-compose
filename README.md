@@ -11,10 +11,10 @@ You probably want to use this when you work with smart and dumb components and y
 Set relay [environment](https://facebook.github.io/relay/docs/relay-environment.html) using `setEnvironment` in your entry point. For example in `client.js`:
 
 ```js
-import { setEnviroment } from 'relay-compose';
+import { setEnvironment } from 'relay-compose';
 import relayEnv from './createRelayEnvironment'
 
-setEnviroment(relayEnv);
+setEnvironment(relayEnv);
 ```
 
 And now you are ready to use it.
