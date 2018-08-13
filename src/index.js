@@ -15,6 +15,9 @@ const invariant = () => {
   }
 };
 
+// leave this one because by the time we found this typo the lib had been installed by many people.
+// So to not break peoples' apps just leave this for noe.
+export const setEnviroment = env => environment = env;
 export const setEnvironment = env => environment = env;
 
 export const fragment = query => Component => createFragmentContainer(
