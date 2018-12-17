@@ -45,7 +45,7 @@ export const queryRenderer = (rootQuery, variables) =>
           environment={environment}
           query={rootQuery}
           variables={vars}
-          render={({ error, props }) => {
+          render={({ error, props, retry }) => {
             if (!props && !error) {
               return null;
             }
@@ -55,6 +55,7 @@ export const queryRenderer = (rootQuery, variables) =>
                 {...props}
                 {...this.props}
                 error={error}
+                retry={retry}
               />
             );
           }}
