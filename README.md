@@ -177,5 +177,28 @@ export default compose(
 )(Test);
 ```
 
+
+## Subscriptions
+```js
+import { graphql } from 'react-relay';
+import { createSubscription } from 'relay-compose';
+
+const subscription = graphql`
+  subscription UnreadMessageNotificationSubscription($input: String) {
+    unreadMessageNotification(input: $input) {
+      unreadMessage
+    }
+  }
+`;
+
+function create(input) {
+  return createSubscription(subscription, { input });
+}
+
+export default {
+  create,
+};
+```
+
 # Information
 This project is still in WIP. You are welcome to participate to it.

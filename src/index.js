@@ -88,3 +88,28 @@ export const createMutation = (
     },
   );
 });
+
+export const createSubscription = (
+  subscription,
+  variables,
+  config,
+) => new Promise((res, rej) => {
+  invariant();
+
+  requestSubscription(
+    environment,
+    {
+      subscription,
+      variables,
+      onCompleted: (result, errors) => {
+        if (errors) {
+          return rej(errors);
+        }
+
+        res(result);
+      },
+      onError: rej,
+      ...config,
+    },
+  );
+});
