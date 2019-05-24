@@ -5,6 +5,7 @@ import {
   commitMutation,
   createRefetchContainer,
   createPaginationContainer,
+  requestSubscription,
 } from 'react-relay';
 
 let environment;
