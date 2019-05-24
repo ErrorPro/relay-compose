@@ -27,7 +27,7 @@
   "homepage": "https://github.com/ErrorPro/relay-compose#readme",
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
-    "react-relay": "^1.0.0"
+    "react-relay": "^1.0.0 || ^2.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
