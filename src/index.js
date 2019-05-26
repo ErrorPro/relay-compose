@@ -5,6 +5,7 @@ import {
   commitMutation,
   createRefetchContainer,
   createPaginationContainer,
+  requestSubscription,
 } from 'react-relay';
 
 let environment;
@@ -80,6 +81,31 @@ export const createMutation = (
     environment,
     {
       mutation,
+      onCompleted: (result, errors) => {
+        if (errors) {
+          return rej(errors);
+        }
+
+        res(result);
+      },
+      onError: rej,
+      ...config,
+    },
+  );
+});
+
+export const createSubscription = (
+  subscription,
+  variables,
+  config,
+) => new Promise((res, rej) => {
+  invariant();
+
+  requestSubscription(
+    environment,
+    {
+      subscription,
+      variables,
       onCompleted: (result, errors) => {
         if (errors) {
           return rej(errors);
