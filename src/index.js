@@ -32,7 +32,7 @@ export const paginationContainer = (query, connectionConfig) => Component => cre
   connectionConfig,
 );
 
-export const queryRenderer = (rootQuery, variables) =>
+export const queryRenderer = (rootQuery, variables, LoadingComponent, loadingComponentProps = {}) =>
   Component => class RelayRoot extends React.Component {
     static displayName = `RelayRoot(${Component.displayName})`
 
@@ -48,6 +48,10 @@ export const queryRenderer = (rootQuery, variables) =>
           variables={vars}
           render={({ error, props, retry }) => {
             if (!props && !error) {
+              const toRenderDuringLoading = LoadingComponent
+                ? <LoadingComponent {...loadingComponentProps} />
+                : null;
+
               return null;
             }
 
@@ -62,8 +66,8 @@ export const queryRenderer = (rootQuery, variables) =>
           }}
         />
       );
-  }
-};
+    }
+  };
 
 export const refetchContainer = (renderVariables, query) => Component => createRefetchContainer(
   Component,
