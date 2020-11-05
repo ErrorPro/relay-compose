@@ -52,7 +52,7 @@ export const queryRenderer = (rootQuery, variables, LoadingComponent, loadingCom
                 ? <LoadingComponent {...loadingComponentProps} />
                 : null;
 
-              return null;
+              return toRenderDuringLoading;
             }
 
             return (
